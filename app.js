@@ -1,15 +1,3 @@
-//Chegou a hora de juntar tudo! O arquivo app.js será o "Maestro" da nossa orquestra. É apenas aqui que você vai interagir com o usuário e usar as validações para garantir que ele não digite besteira.
-//I. Importe o prompt-sync e todas as funções que você exportou dos seus três módulos. (carrinho, produtos e validacoes). Use require() para isso. O código de importação é com você, mas tente ser organizado e claro para que fique fácil de entender o que está sendo importado e de onde.
-//II. Crie um laço de repetição (while) exibindo o Menu Principal:
-// [1] Cadastrar Produto
-// [2] Ver Catálogo
-// [3] Adicionar ao Carrinho
-// [4] Ver Resumo da Compra
-// [0] Sair
-//III. Use switch/case ou if/else para tratar as opções.
-//IV. A Regra da Validação: Toda vez que for pedir um dado crítico ao usuário (como Preço ou ID), use um laço de repetição junto com o seu módulo de validações.
-// Exemplo lógico: Peça o preço -> Passe o preço para isNumeroValido() -> Se retornar false, avise o erro e peça de novo. Se retornar true, siga em frente e chame a função de cadastrar.
-
 const prompt = require('prompt-sync')();
 
 const { cadastrarProduto, listarProdutos, buscarProdutoPorId } = require('./produtos');

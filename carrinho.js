@@ -1,9 +1,3 @@
-//Este é o motor financeiro das compras.
-//I. Crie um array vazio chamado meuCarrinho.
-//II. Crie a função adicionarItem(produto, quantidade, descontoPercentual). A lógica matemática é com você: calcule o valor do desconto em cima do preço do produto, multiplique pela quantidade e guarde um objeto com o subtotal no meuCarrinho.
-//III. Crie a função exibirResumo(). Ela deve somar os subtotais de todos os itens do carrinho e imprimir o valor final que o cliente deve pagar.
-//IV. Exporte as duas funções no final do arquivo.
-
 function criarCarrinho() {
     const meuCarrinho = [];
 
