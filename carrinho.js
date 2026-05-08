@@ -5,20 +5,20 @@ function criarCarrinho() {
         const desconto = produto.preco * (descontoPercentual / 100);
         const precoComDesconto = produto.preco - desconto;
         const subtotal = precoComDesconto * quantidade;
+        const valorUnitario = produto.preco;
 
         const item = {
-            produto,
+            produto: produto.nome,
             quantidade,
-            descontoPercentual,
-            subtotal
+            desconto: descontoPercentual,
+            total: subtotal,
+            valorUnitario
         };
-
         meuCarrinho.push(item);
     }
 
     function exibirResumo() {
-        const valorFinal = meuCarrinho.reduce((total, item) => total + item.subtotal, 0);
-        console.log(`Valor final a pagar: R$${valorFinal.toFixed(2)}`);
+        return meuCarrinho;
     }
 
     return {
@@ -26,5 +26,4 @@ function criarCarrinho() {
         exibirResumo
     };
 }
-
 module.exports = criarCarrinho();

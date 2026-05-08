@@ -3,6 +3,7 @@ const prompt = require('prompt-sync')();
 const { cadastrarProduto, listarProdutos, buscarProdutoPorId } = require('./produtos');
 const { adicionarItem, exibirResumo } = require('./carrinho');
 const { isNumeroValido, isTextoValido } = require('./validacoes');
+const { Table } = require ('console-table-printer');
 
 while (true) {
     console.log("\nMenu Principal:");
@@ -42,9 +43,28 @@ while (true) {
             console.log("Produto cadastrado com sucesso!");
             break;
 
-        case '2':
-            listarProdutos();
-            break;
+            case '2':
+                const produtos = listarProdutos();
+            
+                const tabelaProdutos = new Table({
+                    title: 'Catálogo de Produtos',
+                    columns: [
+                        { name: 'id', title: 'ID', alignment: 'left', color: 'cyan' },
+                        { name: 'nome', title: 'Produto', alignment: 'left' },
+                        { name: 'preco', title: 'Preço (R$)', alignment: 'right', color: 'green' },
+                    ],
+                });
+            
+                produtos.forEach(produto => {
+                    tabelaProdutos.addRow({
+                        id: produto.id,
+                        nome: produto.nome,
+                        preco: produto.preco.toFixed(2)
+                    });
+                });
+            
+                tabelaProdutos.printTable();
+                break;
 
         case '3':
             let produtoId, quantidade, desconto;
@@ -79,11 +99,34 @@ while (true) {
             adicionarItem(produto, quantidade, desconto);
             console.log("Produto adicionado ao carrinho!");
             break;
-
-        case '4':
-            exibirResumo();
-            break;
-
+            case '4':
+                const resumo = exibirResumo();
+            
+                const tabelaResumo = new Table({
+                    title: 'Resumo da Compra',
+                    columns: [
+                        { name: 'produto', title: 'Produto' },
+                        { name: 'quantidade', title: 'Qtd' },
+                        { name: 'desconto', title: 'Desc (%)' },
+                        { name: 'valorUnitario', title: 'Valor Unitário (R$)', color: 'yellow' },
+                        { name: 'valorTotal', title: 'Valor Total sem Desconto (R$)', color: 'magenta' },
+                        { name: 'total', title: 'Total (R$)', color: 'green' },
+                    ],
+                });
+            
+                resumo.forEach(item => {
+                    tabelaResumo.addRow({
+                        produto: item.produto,
+                        quantidade: item.quantidade,
+                        desconto: item.desconto,
+                        total: item.total.toFixed(2),
+                        valorUnitario: item.valorUnitario.toFixed(2),
+                        valorTotal: (item.valorUnitario * item.quantidade).toFixed(2),
+                    });
+                });
+            
+                tabelaResumo.printTable();
+                break;
         case '0':
             console.log("Saindo...");
             process.exit();
@@ -92,4 +135,6 @@ while (true) {
             console.log("Opção inválida. Tente novamente.");
     }
 }
+
+
 

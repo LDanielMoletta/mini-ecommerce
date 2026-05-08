@@ -7,10 +7,7 @@ function criarCatalogo() {
     }
 
     function listarProdutos() {
-        console.log("Produtos disponíveis:");
-        catalogo.forEach(produto => {
-            console.log(`ID: ${produto.id}, Nome: ${produto.nome}, Preço: R$${produto.preco.toFixed(2)}`);
-        });
+        return catalogo;
     }
 
     function buscarProdutoPorId(id) {
@@ -25,3 +22,5 @@ function criarCatalogo() {
 }
 
 module.exports = criarCatalogo();
+
+
