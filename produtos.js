@@ -1,9 +1,13 @@
 function criarCatalogo() {
     const catalogo = [];
-
-    function cadastrarProduto(id, nome, preco) {
-        const produto = { id, nome, preco };
-        catalogo.push(produto);
+    function cadastrarProduto(nome, preco) {
+        const id = catalogo.length + 1;
+        const novoProduto = {
+            id: id.toString(),
+            nome,
+            preco
+        };
+        catalogo.push(novoProduto);
     }
 
     function listarProdutos() {
@@ -19,7 +23,7 @@ function criarCatalogo() {
         listarProdutos,
         buscarProdutoPorId
     };
-}
+}   
 
 module.exports = criarCatalogo();
 

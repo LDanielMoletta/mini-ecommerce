@@ -6,13 +6,15 @@ function criarCarrinho() {
         const precoComDesconto = produto.preco - desconto;
         const subtotal = precoComDesconto * quantidade;
         const valorUnitario = produto.preco;
+        const valorTotaldosItens = precoComDesconto * quantidade;
 
         const item = {
             produto: produto.nome,
             quantidade,
             desconto: descontoPercentual,
             total: subtotal,
-            valorUnitario
+            valorUnitario,
+            valorTotaldosItens
         };
         meuCarrinho.push(item);
     }
