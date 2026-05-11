@@ -23,9 +23,14 @@ function criarCarrinho() {
         return meuCarrinho;
     }
 
+    function limparCarrinho() {
+        meuCarrinho.length = 0;
+    }
+
     return {
         adicionarItem,
-        exibirResumo
+        exibirResumo,
+        limparCarrinho
     };
 }
 module.exports = criarCarrinho();

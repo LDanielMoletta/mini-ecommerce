@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini E-commerce</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Mini E-commerce</h1>
+      <p>Interface simples para cadastrar produtos, clientes e finalizar pedidos.</p>
+    </header>
+
+    <section class="box" id="status-box">
+      <h2>Status da API</h2>
+      <div id="status">Carregando...</div>
+    </section>
+
+    <section class="box">
+      <h2>Cadastrar Produto</h2>
+      <form id="produto-form">
+        <label>Nome do produto</label>
+        <input type="text" id="produto-nome" placeholder="Ex: Camiseta" required />
+        <label>Preço (R$)</label>
+        <input type="number" id="produto-preco" min="0" step="0.01" placeholder="Ex: 49.90" required />
+        <button type="submit">Cadastrar Produto</button>
+      </form>
+    </section>
+
+    <section class="box">
+      <h2>Cadastrar Cliente</h2>
+      <form id="cliente-form">
+        <label>Nome do cliente</label>
+        <input type="text" id="cliente-nome" placeholder="Ex: Maria Silva" required />
+        <label>E-mail</label>
+        <input type="email" id="cliente-email" placeholder="exemplo@email.com" required />
+        <button type="submit">Cadastrar Cliente</button>
+      </form>
+    </section>
+
+    <section class="box">
+      <h2>Adicionar ao Carrinho</h2>
+      <div class="grid-2">
+        <div>
+          <label>Cliente</label>
+          <select id="cliente-selecionado"></select>
+        </div>
+        <div>
+          <label>Produto</label>
+          <select id="produto-selecionado"></select>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <label>Quantidade</label>
+          <input type="number" id="item-quantidade" min="1" value="1" />
+        </div>
+        <div>
+          <label>Desconto (%)</label>
+          <input type="number" id="item-desconto" min="0" max="100" value="0" />
+        </div>
+      </div>
+      <button id="adicionar-item">Adicionar ao Carrinho</button>
+    </section>
+
+    <section class="box">
+      <h2>Pagamento e Entrega</h2>
+      <div class="grid-2">
+        <div>
+          <label>Método de pagamento</label>
+          <input type="text" id="pagamento-metodo" placeholder="Cartão, Pix, Boleto" />
+        </div>
+        <div>
+          <label>Endereço de entrega</label>
+          <input type="text" id="endereco-entrega" placeholder="Rua, número, bairro" />
+        </div>
+      </div>
+      <button id="definir-dados">Definir Pagamento e Entrega</button>
+    </section>
+
+    <section class="box">
+      <h2>Resumo do Carrinho</h2>
+      <button id="atualizar-carrinho">Atualizar Resumo</button>
+      <pre id="resumo" class="output"></pre>
+    </section>
+
+    <section class="box finalizar">
+      <button id="finalizar-compra">Finalizar Compra</button>
+      <pre id="resultado" class="output"></pre>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
